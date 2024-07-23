@@ -2,18 +2,21 @@ version: '3'
 
 services:
   flask:
-    build:
-      context: ./app
+    container_name: flask
+    build: ./app
     depends_on:
       - redis
     ports:
       - 80:80
+    restart: always
     networks:
       - inception
+
   redis:
     image: redis
     ports:
       - 6379:6379
+    restart: always
     networks:
       - inception
 

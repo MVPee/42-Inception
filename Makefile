@@ -6,11 +6,11 @@ up:
 down:
 	@docker-compose -f srcs/docker-compose.yml down
 
-stop:
-	@docker-compose -f srcs/docker-compose.yml stop
-
 start:
 	@docker-compose -f srcs/docker-compose.yml start
+
+stop:
+	@docker-compose -f srcs/docker-compose.yml stop
 
 status:
 	@docker ps
