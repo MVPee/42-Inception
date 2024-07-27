@@ -7,11 +7,15 @@ RUN apt update -y && \
 
 # Dir for certificate and key for secure connection
 RUN mkdir -p /etc/nginx/ssl
-RUN openssl req -x509 -nodes \
-    -out /etc/nginx/ssl/inception.crt \
-    -keyout /etc/nginx/ssl/inception.key \
-    -subj "/C=BE/ST=RBC/L=Bruxelles/O=42/OU=19/CN=login.42.fr/UID=login"
+RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
+    -out /etc/nginx/ssl/mvan-pee.crt \
+    -keyout /etc/nginx/ssl/mvan-pee.key \
+    -subj "/C=BE/ST=Bruxelles/L=Bruxelles/O=42/OU=mvan-pee/CN=mvan-pee/"
 
 RUN mkdir -p /var/run/nginx
 
-COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY ./conf/nginx.conf /etc/nginx/conf.d/
+
+EXPOSE 443
+
+CMD [ "nginx", "-g", "daemon off;" ]
