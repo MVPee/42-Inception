@@ -1,8 +1,13 @@
 FROM debian:buster
 
-RUN apt update -y && \
-    apt upgrade -y && \
-    apt-get install mariadb-server -y
+ARG DB_NAME=${DB_NAME}
+ARG DB_USER=${DB_USER}
+ARG DB_PASSWORD=${DB_PASSWORD}
+ARG DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+
+RUN apt-get update && apt-get install \
+	mariadb-server -y && \
+	rm -rf /var/lib/apt/lists/*
 
 COPY conf/mariadb.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
