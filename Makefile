@@ -15,5 +15,10 @@ stop:
 status:
 	@docker ps
 
+rm:
+	docker stop $(shell docker ps -a -q)
+	docker rm $(shell docker ps -a -q)
+	docker rmi $(shell docker image ls -q)
+
 image:
 	@docker image ls
