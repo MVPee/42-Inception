@@ -1,11 +1,8 @@
 #!/bin/bash
 
-WP_CONFIG_FILE=/var/www/html/wp-config.php
-
-if [ ! -f "$WP_CONFIG_FILE" ]; then
+if [ ! -f "/var/www/html/wp-config.php" ]; then
 
 	cd /var/www/html
-	
 	wp core download --allow-root
 
 	until mysqladmin --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} --host=mariadb ping; do
