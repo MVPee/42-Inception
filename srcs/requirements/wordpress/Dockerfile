@@ -12,7 +12,7 @@ RUN	apt-get update && \
 RUN mkdir -p /run/php
 RUN	mkdir -p /var/www/html
 
-# WordPress command line interface
+# WordPress command line interface (wp-cli)
 RUN	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
 	chmod +x wp-cli.phar && \
     mv wp-cli.phar /usr/local/bin/wp

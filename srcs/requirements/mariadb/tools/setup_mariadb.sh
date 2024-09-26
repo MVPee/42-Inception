@@ -4,6 +4,7 @@ DATABASE_DIR=/var/lib/mysql/${MYSQL_DATABASE}
 
 if [ ! -d "$DATABASE_DIR" ]; then
 
+	# Launch mariadb in background
 	/usr/bin/mysqld_safe --datadir=/var/lib/mysql &
 
 	until mysqladmin ping 2> /dev/null; do
@@ -21,7 +22,7 @@ if [ ! -d "$DATABASE_DIR" ]; then
 	FLUSH PRIVILEGES;
 
 EOF
-
+	# Stop mariadb => Restart it
 	killall mysqld 2> /dev/null
 
 fi

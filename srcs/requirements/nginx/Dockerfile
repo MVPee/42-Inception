@@ -8,6 +8,11 @@ RUN	openssl req -new -newkey rsa:4096 -x509 -sha512 -days 365 -nodes  \
 	-out /etc/ssl/certs/mvp.crt  \
 	-keyout /etc/ssl/private/mvp.key
 
+# rsa:4096 new rsa key of 4096bits
+# sha secure hash algo
+# x509 self-signed
+# nodes skip passphrase
+
 COPY ./conf/nginx.conf /etc/nginx/conf.d
 
 EXPOSE	443
