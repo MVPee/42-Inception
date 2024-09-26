@@ -1,41 +1,33 @@
-all: up
+DOCKER_COMPOSE_FILE		= srcs/docker-compose.yml
+DATABASE_VOLUME			= /home/mvan-pee/data/mysql
+WORDPRESS_VOLUME		= /home/mvan-pee/data/wordpress
+DATABASE_DOCKER_VOLUME	= srcs_mariadb
+WORDPRESS_DOCKER_VOLUME	= srcs_wordpress
+MKDIR					= mkdir -p
+RM						= rm -rf
+
+all:	up
 
 up:
-	@docker-compose -f srcs/docker-compose.yml up -d
+		sudo $(MKDIR) $(DATABASE_VOLUME)
+		sudo $(MKDIR) $(WORDPRESS_VOLUME)
+		docker-compose -f $(DOCKER_COMPOSE_FILE) up --build -d
 
 down:
-	@docker-compose -f srcs/docker-compose.yml down
-
-start:
-	@docker-compose -f srcs/docker-compose.yml start -d
+		docker-compose -f $(DOCKER_COMPOSE_FILE) down
 
 stop:
-	@docker-compose -f srcs/docker-compose.yml stop
+		docker-compose -f $(DOCKER_COMPOSE_FILE) stop
 
-status:
-	@docker ps
+clean:		down
+		docker container prune --force
 
-rm:
-	@if [ -n "$$(docker ps -a -q)" ]; then \
-		echo "Stopping containers..."; \
-		docker stop $$(docker ps -a -q); \
-	else \
-		echo "No containers to stop."; \
-	fi
-	@if [ -n "$$(docker ps -a -q)" ]; then \
-		echo "Removing containers..."; \
-		docker rm $$(docker ps -a -q); \
-	else \
-		echo "No containers to remove."; \
-	fi
-	@if [ -n "$$(docker images -q)" ]; then \
-		echo "Removing images..."; \
-		docker rmi $$(docker images -q); \
-	else \
-		echo "No images to remove."; \
-	fi
+fclean:		clean
+		sudo $(RM) $(DATABASE_VOLUME)
+		sudo $(RM) $(WORDPRESS_VOLUME)
+		docker system prune --all --force
+		docker volume rm $(DATABASE_DOCKER_VOLUME) $(WORDPRESS_DOCKER_VOLUME)
 
-image:
-	@docker image ls
+re:			fclean all
 
-.PHONY: rm all up down start stop status image
+.PHONY:		all volume up down clean fclean re
