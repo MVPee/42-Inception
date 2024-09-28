@@ -27,6 +27,3 @@ machine.
 make
 ```
 It will automatically compile the project. Create containers, network and volumes.
-
----
-This group project was done by [MVPee (mvan-pee)](https://github.com/MVPee) and [Dan (dspilleb)](https://github.com/dspilleb)
