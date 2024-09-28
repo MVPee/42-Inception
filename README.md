@@ -10,7 +10,7 @@
 </p>
 
 <h3 align="center">
-	<a href="#-running-the-server">Running</a>
+	<a href="#-running-the-containers">Running</a>
 </h3>
 
 
@@ -27,3 +27,9 @@ machine.
 make
 ```
 It will automatically compile the project. Create containers, network and volumes.
+
+---
+
+<p align="center">
+	<img src="./.images/network.png" width="600">
+</p>
