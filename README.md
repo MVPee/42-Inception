@@ -1,5 +1,5 @@
 <h1 align="center">
-	📖 42-inception
+	👾  42-inception
 </h1>
 
 <p align="center">
