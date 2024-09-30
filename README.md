@@ -6,7 +6,7 @@
 	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/MVPee/42-inception?color=lightblue" />
 	<img alt="Code language count" src="https://img.shields.io/github/languages/count/MVPee/42-inception?color=yellow" />
 	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/MVPee/42-inception?color=blue" />
-	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/MVPee/42-inceptioncolor=green" />
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/MVPee/42-inception?color=green" />
 </p>
 
 <h3 align="center">
