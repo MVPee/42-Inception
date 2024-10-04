@@ -10,6 +10,8 @@
 </p>
 
 <h3 align="center">
+	<a href="#-about-the-project">About</a>
+	<span> · </span>
 	<a href="#-running-the-containers">Running</a>
 </h3>
 
